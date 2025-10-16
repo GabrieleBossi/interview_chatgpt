@@ -9,7 +9,6 @@ It handles DDPs in the english language with filetype JSON.
 import logging
 
 import pandas as pd
-from IPython.display import display, HTML
 
 import port.api.props as props
 import port.api.d3i_props as d3i_props
@@ -68,13 +67,13 @@ def conversations_to_df(chatgpt_zip: str)  -> pd.DataFrame:
                         "message": message,
                         "model": model,
                         "time": time,
-                        "link": f'<a href="https://chatgpt.com/c/{conversation_id}">https://chatgpt.com/c/{conversation_id}</a>'
+                        "link": f'[conversation link](https://chatgpt.com/c/{conversation_id})'
                     }
                     if role != "":
                         datapoints.append(datapoint)
 
         out = pd.DataFrame(datapoints)
-        HTML(out.to_html(escape=False))
+        
     except Exception as e:
         logger.error("Data extraction error: %s", e)
         
