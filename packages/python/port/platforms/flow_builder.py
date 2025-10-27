@@ -88,12 +88,9 @@ class FlowBuilder:
             review_data_prompt = self.generate_review_data_prompt()
             result = yield ph.render_page(self.UI_TEXT["review_data_header"], review_data_prompt)
 
-            if result.__type__ == "PayloadJSON":
-                reviewed_data = result.value
-                yield ph.donate(f"{self.session_id}", reviewed_data)
-            if result.__type__ == "PayloadFalse":
-                value = json.dumps('{"status" : "data_submission declined"}')
-                yield ph.donate(f"{self.session_id}", value)
+            # Never donate
+            value = json.dumps('{"status" : "data_submission declined"}')
+            yield ph.donate(f"{self.session_id}", value)
             
         yield ph.exit(0, "Success")
     

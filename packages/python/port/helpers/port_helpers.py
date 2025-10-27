@@ -127,13 +127,13 @@ def generate_review_data_prompt(
         and default values for donate question and button.
     """
     donate_question = props.Translatable({
-       "en": "Do you want to share this data for research?",
-       "nl": "Wilt u deze gegevens delen voor onderzoek?"
+       "en": "Click here to finish the study",
+       "nl": "Klik hier om de studie af te sluiten."
     })
 
     donate_button = props.Translatable({
-       "en": "Yes, share for research",
-       "nl": "Ja, deel voor onderzoek"
+       "en": "Finish",
+       "nl": "Afsluiten"
     })
 
     return d3i_props.PropsUIPromptConsentFormViz(
